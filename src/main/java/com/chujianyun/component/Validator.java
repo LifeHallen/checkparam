@@ -17,4 +17,7 @@ public abstract class Validator<P> {
     abstract void validate(P param);
 
 
+    public Set<Enum> getGroups() {
+        return groups;
+    }
 }
