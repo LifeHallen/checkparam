@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -27,5 +28,10 @@ public class UserController {
     @PostMapping("/checkSome")
     public ResponseEntity<UserDTO> checkUserSome(UserParam userParam) {
         return new ResponseEntity<>(userService.checkUserSome(userParam), HttpStatus.OK);
+    }
+
+    @PostMapping("/helloworld")
+    public void helloworld(@RequestBody  UserParam userParam) {
+        System.out.println("测试程序正常运行");
     }
 }
