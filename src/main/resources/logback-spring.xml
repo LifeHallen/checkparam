@@ -19,22 +19,22 @@
 <!--please pay attention that: file name should not be logback.xml，name it logback-spring.xml to use it in springboot framework-->
 <configuration>
 
-    <springProperty scope="context" name="logging.level" source="logging.level.com.alipay.demo"/>
+    <springProperty scope="context" name="logging.level" source="logging.level.com.chujianyun"/>
 
-    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
         <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
             <Pattern>%d{HH:mm:ss.SSS} %-5level [%X{SOFA-TraceId},%X{SOFA-SpanId}] %logger{80} - %msg%n</Pattern>
         </encoder>
     </appender>
-   
-    <logger name="com.alipay.demo" level="${logging.level}" additivity="false">
-        <appender-ref ref="STDOUT"/>
-    </logger>
+
+    <logger level="INFO" name="org.springframework.web"/>
+    <logger level="INFO" name="org.springframework.boot"/>
+    <logger level="INFO" name="com.chujianyun"/>
+    <logger level="INFO" name="com.chujianyun"/>
     <logger name="org.apache.coyote" level="INFO" additivity="false">
-        <appender-ref ref="STDOUT"/>
+        <appender-ref ref="console"/>
     </logger>
-    
-    <root level="WARN">
-        <appender-ref ref="STDOUT"/>
+    <root level="INFO">
+        <appender-ref ref="console"/>
     </root>
 </configuration>
